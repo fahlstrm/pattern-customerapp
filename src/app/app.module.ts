@@ -9,6 +9,7 @@ import { StartDialogComponent } from './components/start-dialog/start-dialog.com
 import { HeaderComponent } from './components/header/header.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ParkDialogComponent } from './components/park-dialog/park-dialog.component';
+import { FinishSnackbarComponent } from './components/finish-snackbar/finish-snackbar.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ParkDialogComponent } from './components/park-dialog/park-dialog.compon
     MapComponent,
     StartDialogComponent,
     HeaderComponent,
-    ParkDialogComponent
+    ParkDialogComponent,
+    FinishSnackbarComponent
   ],
   imports: [
     BrowserModule,

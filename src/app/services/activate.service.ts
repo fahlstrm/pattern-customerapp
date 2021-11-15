@@ -1,8 +1,10 @@
 import { Injectable, Output } from '@angular/core';
 import  { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { StartDialogComponent } from '../components/start-dialog/start-dialog.component';
 import { ParkDialogComponent } from '../components/park-dialog/park-dialog.component';
+import { FinishSnackbarComponent } from '../components/finish-snackbar/finish-snackbar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +14,18 @@ export class ActivateService {
   private scooter: any;
   private subject = new Subject<any>();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
+  // Opens dialog on scooter marker
   markerClick(id: any) {
-    console.log("Du har valt scooter " + id)
     let dialogRef = this.dialog.open(StartDialogComponent, {
       data: {scooter: id}
     });
-  
+    
+    // Actions if rent scooter button is clicked
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`)
       if (result == "true") {
+        console.log("Du har valt scooter " + id)
         this.toggleActive();
         this.scooter = id;
       }
@@ -39,7 +42,6 @@ export class ActivateService {
   }
 
   parkClick(id: any) {
-    console.log("Du har parkerat scooter " + this.scooter + " på parkering " + id)
     let dialogRef = this.dialog.open(ParkDialogComponent, {
       data: {parking: id}
     });
@@ -47,8 +49,16 @@ export class ActivateService {
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`)
       if (result == "true") {
+        console.log("Du har parkerat scooter " + this.scooter + " på parkering " + id)
         this.toggleActive();
+        this.openSnackbar();
       }
     })
+  }
+
+  openSnackbar() {
+    this._snackBar.openFromComponent(FinishSnackbarComponent, {
+      duration: 5000,
+    });
   }
 }
