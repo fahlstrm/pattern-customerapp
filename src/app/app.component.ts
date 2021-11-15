@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'userapp';
-  // active = false;
-
-  // scooterActive() {
-  //   this.active = !this.active;
-  //   console.log(this.active);
-  // }
-
 }

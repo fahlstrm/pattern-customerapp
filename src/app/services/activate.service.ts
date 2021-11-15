@@ -20,7 +20,9 @@ export class ActivateService {
   
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`)
-      this.toggleActive();
+      if (result == "true") {
+        this.toggleActive();
+      }
     })
   }
 
