@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
 import { MatDialog } from '@angular/material/dialog';
 import { StartDialogComponent } from '../start-dialog/start-dialog.component';
+import { ActivateService } from 'src/app/services/activate.service';
 
 @Component({
   selector: 'app-map',
@@ -30,15 +31,20 @@ icon = icon({
   // shadowUrl: 'leaflet/marker-shadow.png'
 })
 
-constructor(public dialog: MatDialog, private zone: NgZone) {
+constructor(public dialog: MatDialog, private zone: NgZone, private activateService: ActivateService) {
 }
 
-markerClick(id: any) {
-  console.log("Du har valt scooter" + id)
-  this.dialog.open(StartDialogComponent, {
-    data: "test"
-  });
-}
+// markerClick(id: any) {
+//   console.log("Du har valt scooter" + id)
+//   let dialogRef = this.dialog.open(StartDialogComponent, {
+//     data: {scooter: id}
+//   });
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     console.log(`Dialog result: ${result}`)
+    
+//   })
+// }
 
 ngOnInit(): void {
   // Scooter array, get from database
@@ -106,7 +112,7 @@ ngOnInit(): void {
     this.layers.push(marker([ s.lat_pos, s.lon_pos], {
       icon: this.icon
     }).addEventListener("click", () => {
-      this.zone.run(() => this.markerClick(s.id))
+      this.zone.run(() => this.activateService.markerClick(s.id))
     }));
   });
 }

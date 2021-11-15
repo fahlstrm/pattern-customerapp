@@ -10,18 +10,15 @@ export class StartDialogComponent implements OnInit {
   fromPage!: string;
   fromDialog!: string;
 
-  constructor(
-    public dialog: MatDialogRef<StartDialogComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public mydata: any
-    ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
   }
 
-  closeDialog() {
-    this.dialog.close({ 
-      event: 'close', data: this.fromDialog 
-    });
-  }
+  // closeDialog() {
+  //   this.dialog.close({ 
+  //     event: 'close', data: this.fromDialog 
+  //   });
+  // }
 
 }
