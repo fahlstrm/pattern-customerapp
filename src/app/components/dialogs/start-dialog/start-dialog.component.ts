@@ -15,10 +15,4 @@ export class StartDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // closeDialog() {
-  //   this.dialog.close({ 
-  //     event: 'close', data: this.fromDialog 
-  //   });
-  // }
-
 }
