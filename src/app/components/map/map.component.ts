@@ -1,7 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { ActivateService } from 'src/app/services/activate.service';
+import { CityService } from 'src/app/services/city.service';
 import { ScootersService } from 'src/app/services/scooters.service';
 
 @Component({
@@ -15,6 +16,10 @@ export class MapComponent implements OnInit {
   parkings!: Array<any>
   scooterActive!: boolean;
   subscription: Subscription;
+  sub_city: Subscription;
+  centers = [latLng([ 58.1815656, 13.9546027 ]), latLng([58.4166246,14.1230092])];
+  cityCenter = this.centers[0];
+  
 
 // Base layers
   streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -43,13 +48,19 @@ export class MapComponent implements OnInit {
   // Zoom and center options
   options = {
     zoom: 14,
-    center: latLng([ 58.1815656, 13.9546027 ])
+    center: this.cityCenter
   };
 
-constructor(private zone: NgZone, private activateService: ActivateService, private scootersService: ScootersService) {
+constructor(private zone: NgZone, private activateService: ActivateService, private scootersService: ScootersService, private cityService: CityService) {
   this.subscription = this.activateService.onToggle()
     .subscribe(value => {
       this.scooterActive = value;
+      this.addMapContent();
+    });
+    this.sub_city = this.cityService.onSet()
+    .subscribe(value => {
+      this.cityCenter = this.centers[value-1];
+      console.log(this.centers[value-1])
       this.addMapContent();
     });
 }
@@ -59,9 +70,6 @@ ngOnInit(): void {
 }
 
 addMapContent() {
-  // Scooter array, get from database
-  this.scooters = this.scootersService.getScooters();
-  this.parkings = this.scootersService.getParkings();
 
   // Add base layers
   this.layers = [
@@ -71,6 +79,7 @@ addMapContent() {
 
   if (this.scooterActive) {
     // Add parking markers to map
+    this.parkings = this.scootersService.getParkings();
   this.parkings.forEach(p => {
     this.layers.push(marker([ p.lat_pos, p.lon_pos], {
       icon: this.parkingIcon
@@ -82,6 +91,7 @@ addMapContent() {
   
   if (!this.scooterActive) {
     // Add scooter markers to map
+    this.scooters = this.scootersService.getScooters();
     this.scooters.forEach(s => {
       this.layers.push(marker([ s.lat_pos, s.lon_pos], {
         icon: this.icon

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivateService } from 'src/app/services/activate.service';
+import { CityService } from 'src/app/services/city.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,16 @@ export class HeaderComponent implements OnInit {
   scooterActive!: boolean;
   subscription: Subscription;
 
-  constructor(private activateService: ActivateService) {
+  constructor(private activateService: ActivateService, private cityService: CityService) {
     this.subscription = this.activateService.onToggle()
     .subscribe(value => this.scooterActive = value);
   }
 
   ngOnInit(): void {
+  }
+
+  changeCity(city: any) {
+    this.cityService.setCity(city);
   }
 
 }
