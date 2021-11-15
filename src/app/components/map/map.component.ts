@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
   })
 
   parkingIcon = icon({
-    iconSize: [ 40, 40 ],
+    iconSize: [ 35, 35 ],
     iconAnchor: [ 13, 41 ],
     iconUrl: '../../../assets/img/parking.png',
     // shadowUrl: 'leaflet/marker-shadow.png'
@@ -65,6 +65,8 @@ addMapContent() {
   this.parkings.forEach(s => {
     this.layers.push(marker([ s.lat_pos, s.lon_pos], {
       icon: this.parkingIcon
+    }).addEventListener("click", () => {
+      this.zone.run(() => this.activateService.parkClick())
     }));
   });
 

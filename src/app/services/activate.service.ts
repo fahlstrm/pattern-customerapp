@@ -2,6 +2,7 @@ import { Injectable, Output } from '@angular/core';
 import  { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { StartDialogComponent } from '../components/start-dialog/start-dialog.component';
+import { ParkDialogComponent } from '../components/park-dialog/park-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,19 @@ export class ActivateService {
 
   onToggle(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  parkClick() {
+    console.log("Du har parkerat")
+    let dialogRef = this.dialog.open(ParkDialogComponent, {
+      data: {scooter: "hi"}
+    });
+  
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`)
+    //   if (result == "true") {
+    //     this.toggleActive();
+    //   }
+    // })
   }
 }

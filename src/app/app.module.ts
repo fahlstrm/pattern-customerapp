@@ -8,6 +8,7 @@ import { MapComponent } from './components/map/map.component';
 import { StartDialogComponent } from './components/start-dialog/start-dialog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { ParkDialogComponent } from './components/park-dialog/park-dialog.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     AppComponent,
     MapComponent,
     StartDialogComponent,
-    HeaderComponent
+    HeaderComponent,
+    ParkDialogComponent
   ],
   imports: [
     BrowserModule,
