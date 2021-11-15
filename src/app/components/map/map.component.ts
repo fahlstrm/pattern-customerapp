@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
+import { Subscription } from 'rxjs';
 import { ActivateService } from 'src/app/services/activate.service';
 import { ScootersService } from 'src/app/services/scooters.service';
 
@@ -12,6 +13,8 @@ export class MapComponent implements OnInit {
   layers!: Array<any>
   scooters!: Array<any>
   parkings!: Array<any>
+  scooterActive!: boolean;
+  subscription: Subscription;
 
 // Base layers
   streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -44,6 +47,11 @@ export class MapComponent implements OnInit {
   };
 
 constructor(private zone: NgZone, private activateService: ActivateService, private scootersService: ScootersService) {
+  this.subscription = this.activateService.onToggle()
+    .subscribe(value => {
+      this.scooterActive = value;
+      this.addMapContent();
+    });
 }
 
 ngOnInit(): void {
@@ -61,23 +69,27 @@ addMapContent() {
     this.wMaps
   ]
 
-  // Add parking markers to map
-  this.parkings.forEach(s => {
-    this.layers.push(marker([ s.lat_pos, s.lon_pos], {
+  if (this.scooterActive) {
+    // Add parking markers to map
+  this.parkings.forEach(p => {
+    this.layers.push(marker([ p.lat_pos, p.lon_pos], {
       icon: this.parkingIcon
     }).addEventListener("click", () => {
-      this.zone.run(() => this.activateService.parkClick())
+      this.zone.run(() => this.activateService.parkClick(p.id))
     }));
   });
-
-  // Add scooter markers to map
-  this.scooters.forEach(s => {
-    this.layers.push(marker([ s.lat_pos, s.lon_pos], {
-      icon: this.icon
-    }).addEventListener("click", () => {
-      this.zone.run(() => this.activateService.markerClick(s.id))
-    }));
-  });
+  }
+  
+  if (!this.scooterActive) {
+    // Add scooter markers to map
+    this.scooters.forEach(s => {
+      this.layers.push(marker([ s.lat_pos, s.lon_pos], {
+        icon: this.icon
+      }).addEventListener("click", () => {
+        this.zone.run(() => this.activateService.markerClick(s.id))
+      }));
+    });
+  }
 }
 
 }

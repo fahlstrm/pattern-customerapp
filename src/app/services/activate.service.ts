@@ -9,20 +9,22 @@ import { ParkDialogComponent } from '../components/park-dialog/park-dialog.compo
 })
 export class ActivateService {
   private scooterActive: boolean = false;
+  private scooter: any;
   private subject = new Subject<any>();
 
   constructor(public dialog: MatDialog) { }
 
   markerClick(id: any) {
-    console.log("Du har valt scooter" + id)
+    console.log("Du har valt scooter " + id)
     let dialogRef = this.dialog.open(StartDialogComponent, {
       data: {scooter: id}
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
+      // console.log(`Dialog result: ${result}`)
       if (result == "true") {
         this.toggleActive();
+        this.scooter = id;
       }
     })
   }
@@ -36,17 +38,17 @@ export class ActivateService {
     return this.subject.asObservable();
   }
 
-  parkClick() {
-    console.log("Du har parkerat")
+  parkClick(id: any) {
+    console.log("Du har parkerat scooter " + this.scooter + " på parkering " + id)
     let dialogRef = this.dialog.open(ParkDialogComponent, {
-      data: {scooter: "hi"}
+      data: {parking: id}
     });
   
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`)
-    //   if (result == "true") {
-    //     this.toggleActive();
-    //   }
-    // })
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`)
+      if (result == "true") {
+        this.toggleActive();
+      }
+    })
   }
 }
