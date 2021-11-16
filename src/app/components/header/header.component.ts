@@ -27,4 +27,8 @@ export class HeaderComponent implements OnInit {
     this.cityService.setCity(city);
   }
 
+  endClick() {
+    this.activateService.endClick();
+  }
+
 }

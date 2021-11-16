@@ -6,5 +6,5 @@
             <button *ngFor="let city of cities" mat-menu-item (click)="changeCity(city.id)">{{ city.name }}</button>
           </mat-menu>
     </mat-toolbar-row>
-    <mat-toolbar-row *ngIf="scooterActive"><p>Scooter is active</p></mat-toolbar-row>
+    <mat-toolbar-row *ngIf="scooterActive"><button mat-button (click)="endClick()">Avsluta resa där du är nu</button></mat-toolbar-row>
 </mat-toolbar>

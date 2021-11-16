@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { StartDialogComponent } from '../components/dialogs/start-dialog/start-dialog.component';
 import { FinishSnackbarComponent } from '../components/dialogs/finish-snackbar/finish-snackbar.component';
 import { ParkDialogComponent } from '../components/dialogs/park-dialog/park-dialog.component';
+import { EndDialogComponent } from '../components/dialogs/end-dialog/end-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -32,22 +33,25 @@ export class ActivateService {
     })
   }
 
+  // Toggle active ride
   toggleActive() {
     this.scooterActive = !this.scooterActive;
     this.subject.next(this.scooterActive)
   }
 
+  // Send active to subscribers
   onToggle(): Observable<any> {
     return this.subject.asObservable();
   }
 
+  // Opens dialog on parking marker
   parkClick(id: any) {
     let dialogRef = this.dialog.open(ParkDialogComponent, {
       data: {parking: id}
     });
-  
+    
+    // Actions if park scooter is clicked
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`)
       if (result == "true") {
         console.log("Du har parkerat scooter " + this.scooter + " på parkering " + id)
         this.toggleActive();
@@ -56,6 +60,21 @@ export class ActivateService {
     })
   }
 
+  // Opens dialog on end outside parking
+  endClick() {
+    let dialogRef = this.dialog.open(EndDialogComponent, {});
+    
+    // Actions if park scooter is clicked
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == "true") {
+        console.log("Du har parkerat scooter " + this.scooter + " på gatan.");
+        this.toggleActive();
+        this.openSnackbar();
+      }
+    })
+  }
+
+  // Opens snackbar to let user know that the ride has finished
   openSnackbar() {
     this._snackBar.openFromComponent(FinishSnackbarComponent, {
       duration: 5000,
