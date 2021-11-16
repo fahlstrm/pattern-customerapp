@@ -3,8 +3,8 @@ import  { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { StartDialogComponent } from '../components/dialogs/start-dialog/start-dialog.component';
-import { ParkDialogComponent } from '../components/dialogs/park-dialog/park-dialog.component';
 import { FinishSnackbarComponent } from '../components/dialogs/finish-snackbar/finish-snackbar.component';
+import { ParkDialogComponent } from '../components/dialogs/park-dialog/park-dialog.component';
 
 @Injectable({
   providedIn: 'root'
