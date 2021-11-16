@@ -2,11 +2,3 @@ img {
     height: 25px;
     margin: auto;
 }
-
-mat-sidenav-container {
-    height: 100%;
-}
-
-mat-sidenav {
-    width: 200px;
-}
