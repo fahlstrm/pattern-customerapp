@@ -90,7 +90,7 @@ addMapContent() {
     this.layers.push(marker([ p.lat_pos, p.lon_pos], {
       icon: p.type == "regular" ? this.parkingIcon : this.chargeIcon
     }).addEventListener("click", () => {
-      this.zone.run(() => this.activateService.parkClick(p.id))
+      this.zone.run(() => this.activateService.parkClick(p.id, p.lat_pos, p.lon_pos))
     }));
   });
   }

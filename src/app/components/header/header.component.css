@@ -1,4 +1,9 @@
 img {
     height: 25px;
     margin: auto;
+    padding-left: 2em;
+}
+
+.end {
+    margin: auto;
 }
