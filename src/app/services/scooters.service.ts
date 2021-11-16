@@ -58,12 +58,14 @@ export class ScootersService {
       {
         "id": 1,
         "lat_pos": 58.18009269, 
-        "lon_pos": 13.94968517
+        "lon_pos": 13.94968517,
+        "type": "charge"
       },
       {
         "id": 2,
         "lat_pos": 58.18617525, 
-        "lon_pos": 13.95874366
+        "lon_pos": 13.95874366,
+        "type": "regular"
       },
     ]
 

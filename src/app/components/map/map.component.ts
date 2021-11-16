@@ -45,6 +45,13 @@ export class MapComponent implements OnInit {
     // shadowUrl: 'leaflet/marker-shadow.png'
   })
 
+  chargeIcon = icon({
+    iconSize: [ 40, 40 ],
+    iconAnchor: [ 13, 41 ],
+    iconUrl: '../../../assets/img/charge.png',
+    // shadowUrl: 'leaflet/marker-shadow.png'
+  })
+
   // Zoom and center options
   options = {
     zoom: 14,
@@ -81,7 +88,7 @@ addMapContent() {
     this.parkings = this.scootersService.getParkings();
   this.parkings.forEach(p => {
     this.layers.push(marker([ p.lat_pos, p.lon_pos], {
-      icon: this.parkingIcon
+      icon: p.type == "regular" ? this.parkingIcon : this.chargeIcon
     }).addEventListener("click", () => {
       this.zone.run(() => this.activateService.parkClick(p.id))
     }));
