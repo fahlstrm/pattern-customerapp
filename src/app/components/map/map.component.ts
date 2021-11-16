@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
   scooterActive!: boolean;
   subscription: Subscription;
   sub_city: Subscription;
-  centers = [latLng([ 58.1815656, 13.9546027 ]), latLng([58.4166246,14.1230092])];
+  centers = [latLng([ 58.1815656, 13.9546027 ]), latLng([55.7048771,13.190846]), latLng([59.859589,17.6363316])];
   cityCenter = this.centers[0];
   
 
@@ -59,8 +59,7 @@ constructor(private zone: NgZone, private activateService: ActivateService, priv
     });
     this.sub_city = this.cityService.onSet()
     .subscribe(value => {
-      this.cityCenter = this.centers[value-1];
-      console.log(this.centers[value-1])
+      this.cityCenter = latLng([value.lat_pos, value.lon_pos]);
       this.addMapContent();
     });
 }

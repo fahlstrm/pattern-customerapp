@@ -9,6 +9,7 @@ import { CityService } from 'src/app/services/city.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  cities!: Array<any>;
   scooterActive!: boolean;
   subscription: Subscription;
 
@@ -18,6 +19,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cities = this.cityService.getCities()
+    console.log(this.cities);
   }
 
   changeCity(city: any) {
