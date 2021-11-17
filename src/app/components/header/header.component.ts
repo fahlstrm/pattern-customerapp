@@ -19,8 +19,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cities = this.cityService.getCities()
-    console.log(this.cities);
+    this.cityService.getCities()
+    .subscribe((data) => {
+      this.cities = data;
+      console.log(data)
+    })
   }
 
   changeCity(city: any) {

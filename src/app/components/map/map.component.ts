@@ -17,9 +17,7 @@ export class MapComponent implements OnInit {
   scooterActive!: boolean;
   subscription: Subscription;
   sub_city: Subscription;
-  centers = [latLng([ 58.1815656, 13.9546027 ]), latLng([55.7048771,13.190846]), latLng([59.859589,17.6363316])];
-  cityCenter = this.centers[0];
-  
+  cityCenter = latLng([ 58.396830, 13.853019 ]);
 
 // Base layers
   streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -66,7 +64,8 @@ constructor(private zone: NgZone, private activateService: ActivateService, priv
     });
     this.sub_city = this.cityService.onSet()
     .subscribe(value => {
-      this.cityCenter = latLng([value.lat_pos, value.lon_pos]);
+      console.log(value)
+      this.cityCenter = latLng([value[0].lat_center, value[0].lon_center]);
       this.addMapContent();
     });
 }
@@ -85,26 +84,34 @@ addMapContent() {
 
   if (this.scooterActive) {
     // Add parking markers to map
-    this.parkings = this.scootersService.getParkings();
-  this.parkings.forEach(p => {
-    this.layers.push(marker([ p.lat_pos, p.lon_pos], {
-      icon: p.type == "regular" ? this.parkingIcon : this.chargeIcon
-    }).addEventListener("click", () => {
-      this.zone.run(() => this.activateService.parkClick(p.id, p.lat_pos, p.lon_pos))
-    }));
-  });
+    this.scootersService.getParkings()
+    .subscribe((data) => {
+      this.parkings = data;
+      this.parkings.forEach(p => {
+        this.layers.push(marker([ p.lat_center, p.lon_center], {
+          icon: p.type == "regular" ? this.parkingIcon : this.chargeIcon
+        }).addEventListener("click", () => {
+          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center))
+        }));
+      });
+    });
+  
   }
   
   if (!this.scooterActive) {
     // Add scooter markers to map
-    this.scooters = this.scootersService.getScooters();
-    this.scooters.forEach(s => {
-      this.layers.push(marker([ s.lat_pos, s.lon_pos], {
-        icon: this.icon
-      }).addEventListener("click", () => {
-        this.zone.run(() => this.activateService.markerClick(s.id))
-      }));
+    this.scootersService.getScooters()
+    .subscribe((data) => {
+      this.scooters = data;
+      this.scooters.forEach(s => {
+        this.layers.push(marker([ s.lat_pos, s.lon_pos], {
+          icon: this.icon
+        }).addEventListener("click", () => {
+          this.zone.run(() => this.activateService.markerClick(s.id))
+        }));
+      });
     });
+    
   }
 }
 
