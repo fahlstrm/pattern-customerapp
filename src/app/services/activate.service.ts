@@ -6,6 +6,7 @@ import { StartDialogComponent } from '../components/dialogs/start-dialog/start-d
 import { FinishSnackbarComponent } from '../components/dialogs/finish-snackbar/finish-snackbar.component';
 import { ParkDialogComponent } from '../components/dialogs/park-dialog/park-dialog.component';
 import { EndDialogComponent } from '../components/dialogs/end-dialog/end-dialog.component';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ActivateService {
   private scooter: any;
   private subject = new Subject<any>();
 
-  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) { }
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private httpService: HttpService) { }
 
   // Opens dialog on scooter marker
   markerClick(id: any) {
@@ -29,6 +30,7 @@ export class ActivateService {
         console.log("Du har valt scooter " + id)
         this.toggleActive();
         this.scooter = id;
+        this.httpService.putStart(id);
       }
     })
   }
@@ -54,6 +56,7 @@ export class ActivateService {
     dialogRef.afterClosed().subscribe(result => {
       if (result == "true") {
         console.log("Du har parkerat scooter " + this.scooter + " på parkering " + id, lat_pos, lon_pos)
+        this.httpService.putPark(this.scooter, id, lat_pos, lon_pos);
         this.toggleActive();
         this.openSnackbar();
       }
@@ -68,6 +71,7 @@ export class ActivateService {
     dialogRef.afterClosed().subscribe(result => {
       if (result == "true") {
         console.log("Du har parkerat scooter " + this.scooter + " på gatan.");
+        this.httpService.putStreetPark(this.scooter);
         this.toggleActive();
         this.openSnackbar();
       }
