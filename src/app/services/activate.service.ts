@@ -45,9 +45,9 @@ export class ActivateService {
   }
 
   // Opens dialog on parking marker
-  parkClick(id: any, lat_pos: any, lon_pos: any) {
+  parkClick(id: any, lat_pos: any, lon_pos: any, name: any) {
     let dialogRef = this.dialog.open(ParkDialogComponent, {
-      data: {parking: id}
+      data: {parking: name}
     });
     
     // Actions if park scooter is clicked

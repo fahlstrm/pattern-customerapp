@@ -89,13 +89,13 @@ addMapContent() {
       this.parkings = data;
       this.parkings.forEach(p => {
         this.layers.push(marker([ p.lat_center, p.lon_center], {
-          icon: p.type == "regular" ? this.parkingIcon : this.chargeIcon
+          icon: p.type == "park" ? this.parkingIcon : this.chargeIcon
         }).addEventListener("click", () => {
-          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center))
+          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center, p.location))
         }));
       });
     });
-  
+
   }
   
   if (!this.scooterActive) {
