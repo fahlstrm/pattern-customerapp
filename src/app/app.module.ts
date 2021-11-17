@@ -11,6 +11,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FinishSnackbarComponent } from './components/dialogs/finish-snackbar/finish-snackbar.component';
 import { ParkDialogComponent } from './components/dialogs/park-dialog/park-dialog.component';
 import { EndDialogComponent } from './components/dialogs/end-dialog/end-dialog.component';
+import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { EndDialogComponent } from './components/dialogs/end-dialog/end-dialog.c
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    LeafletModule
+    LeafletModule,
+    LeafletMarkerClusterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
