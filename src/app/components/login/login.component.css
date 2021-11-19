@@ -1,0 +1,17 @@
+#login {
+    background-color: black;
+    height: 100%;
+    text-align: center;
+}
+
+.logo {
+    width: 75%;
+    max-width: 400px;
+    display: block;
+    margin: auto;
+    padding-top: 20vh;
+}
+
+button {
+    margin-top: 20vh;
+}

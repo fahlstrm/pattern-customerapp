@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './finish-snackbar.component.html',
   styleUrls: ['./finish-snackbar.component.css']
 })
-export class FinishSnackbarComponent implements OnInit {
+export class FinishSnackbarComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
