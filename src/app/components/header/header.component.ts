@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
     this.cityService.getCities()
     .subscribe((data) => {
       this.cities = data;
-      console.log(data)
     })
   }
 

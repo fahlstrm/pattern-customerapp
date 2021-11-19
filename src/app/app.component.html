@@ -1,2 +1,8 @@
-<app-header></app-header>
-<app-map></app-map>
+<div *ngIf="auth; then loggedIn else login"></div>
+<ng-template #loggedIn>
+    <app-header></app-header>
+    <app-map></app-map>
+</ng-template>
+<ng-template #login>
+    <app-login (loginEvent)="loginClick()"></app-login>
+</ng-template>

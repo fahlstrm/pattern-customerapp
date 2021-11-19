@@ -6,13 +6,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './start-dialog.component.html',
   styleUrls: ['./start-dialog.component.css']
 })
-export class StartDialogComponent implements OnInit {
-  fromPage!: string;
-  fromDialog!: string;
+export class StartDialogComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
-
-  ngOnInit(): void {
-  }
 
 }

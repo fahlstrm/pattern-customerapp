@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'userapp';
+  title = 'SCTR';
+  auth = false;
+
+  loginClick() {
+    this.auth = !this.auth;
+    console.log(this.auth);
+  }
 }

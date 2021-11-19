@@ -6,11 +6,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './end-dialog.component.html',
   styleUrls: ['./end-dialog.component.css']
 })
-export class EndDialogComponent implements OnInit {
+export class EndDialogComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

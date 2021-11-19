@@ -64,7 +64,6 @@ constructor(private zone: NgZone, private activateService: ActivateService, priv
     });
     this.sub_city = this.cityService.onSet()
     .subscribe(value => {
-      console.log(value)
       this.cityCenter = latLng([value[0].lat_center, value[0].lon_center]);
       this.addMapContent();
     });
@@ -84,35 +83,43 @@ addMapContent() {
 
   if (this.scooterActive) {
     // Add parking markers to map
-    this.scootersService.getParkings()
-    .subscribe((data) => {
-      this.parkings = data;
-      this.parkings.forEach(p => {
-        this.layers.push(marker([ p.lat_center, p.lon_center], {
-          icon: p.type == "park" ? this.parkingIcon : this.chargeIcon
-        }).addEventListener("click", () => {
-          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center, p.location))
-        }));
-      });
-    });
-
+    this.addStations();
   }
   
   if (!this.scooterActive) {
     // Add scooter markers to map
-    this.scootersService.getScooters()
+    this.addScooters();
+  }
+}
+
+// Adds scooters to map
+addScooters() {
+  this.scootersService.getScooters()
     .subscribe((data) => {
       this.scooters = data;
       this.scooters.forEach(s => {
         this.layers.push(marker([ s.lat_pos, s.lon_pos], {
           icon: this.icon
         }).addEventListener("click", () => {
-          this.zone.run(() => this.activateService.markerClick(s.id))
+          this.zone.run(() => this.activateService.markerClick(s.id));
         }));
       });
     });
-    
-  }
+}
+
+// Adds stations to map
+addStations() {
+  this.scootersService.getParkings()
+    .subscribe((data) => {
+      this.parkings = data;
+      this.parkings.forEach(p => {
+        this.layers.push(marker([ p.lat_center, p.lon_center], {
+          icon: p.type == "park" ? this.parkingIcon : this.chargeIcon
+        }).addEventListener("click", () => {
+          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center, p.location));
+        }));
+      });
+    });
 }
 
 }
