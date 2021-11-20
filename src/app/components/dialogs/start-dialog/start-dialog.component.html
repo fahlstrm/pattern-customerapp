@@ -1,5 +1,7 @@
 <mat-dialog-content>
     <p>Vill du hyra scooter {{data.scooter}}?</p>
+    <p>Batterinivå:</p>
+    <mat-progress-bar mode="determinate" value={{data.battery}} color="accent"></mat-progress-bar>
 </mat-dialog-content>
 <mat-dialog-actions>
 <button mat-raised-button color="accent" mat-dialog-close mat-dialog-close="true">

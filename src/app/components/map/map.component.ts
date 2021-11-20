@@ -101,7 +101,7 @@ addScooters() {
         this.layers.push(marker([ s.lat_pos, s.lon_pos], {
           icon: this.icon
         }).addEventListener("click", () => {
-          this.zone.run(() => this.activateService.markerClick(s.id));
+          this.zone.run(() => this.activateService.markerClick(s.id, s.battery_level));
         }));
       });
     });
