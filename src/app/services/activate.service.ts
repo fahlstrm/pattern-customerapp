@@ -19,9 +19,9 @@ export class ActivateService {
   constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private httpService: HttpService) { }
 
   // Opens dialog on scooter marker
-  markerClick(id: any) {
+  markerClick(id: any, battery: any) {
     let dialogRef = this.dialog.open(StartDialogComponent, {
-      data: {scooter: id}
+      data: {scooter: id, battery: battery}
     });
     
     // Actions if rent scooter button is clicked
