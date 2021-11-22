@@ -14,7 +14,6 @@ import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluste
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

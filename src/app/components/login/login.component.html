@@ -1,6 +1,9 @@
 <div id="login">
     <img src="../../../assets/img/white.png" class="logo">
-    <button mat-raised-button (click)="loginClick()">
-        Login
+    <button mat-raised-button (click)="loginClick()" *ngIf="!loggedIn">
+        Logga in med GitHub
+    </button>
+    <button mat-raised-button (click)="checkClick()" *ngIf="loggedIn">
+        Klicka för att använda appen
     </button>
 </div>
