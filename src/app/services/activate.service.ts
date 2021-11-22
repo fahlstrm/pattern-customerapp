@@ -30,7 +30,7 @@ export class ActivateService {
         console.log("Du har valt scooter " + id)
         this.toggleActive();
         this.scooter = id;
-        this.httpService.putStart(id);
+        this.httpService.putStart(id)
       }
     })
   }

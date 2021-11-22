@@ -38,7 +38,17 @@ export class HttpService {
     let data = {
       "customer_id": this.user
     }
+    console.log(scooterUrl)
+    console.log(data)
     return this.http.put<any>(scooterUrl, data)
+    .subscribe({
+      next: ret => {
+      },
+      error: error => {
+        console.error('There was an error!', error);
+        console.log("ERROR")
+      }
+    });
   }
 
   // For parking outside designated parking areas
@@ -49,6 +59,14 @@ export class HttpService {
       "station_id": "setNull"
     }
     return this.http.put<any>(scooterUrl, data)
+    .subscribe({
+      next: ret => {
+      },
+      error: error => {
+        console.error('There was an error!', error);
+        console.log("ERROR")
+      }
+    });
   }
 
   // For parking in designated parking areas or charging stations
@@ -61,5 +79,13 @@ export class HttpService {
       "lon_pos": lon_pos
     }
     return this.http.put<any>(scooterUrl, data)
+    .subscribe({
+      next: ret => {
+      },
+      error: error => {
+        console.error('There was an error!', error);
+        console.log("ERROR")
+      }
+    });
   }
 }
