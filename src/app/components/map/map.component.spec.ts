@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MapComponent } from './map.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -8,7 +11,8 @@ describe('MapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MapComponent ]
+      declarations: [ MapComponent ],
+      imports: [ MatDialogModule, MatSnackBarModule, HttpClientTestingModule ]
     })
     .compileComponents();
   });

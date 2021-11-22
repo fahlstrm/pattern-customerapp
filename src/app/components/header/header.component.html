@@ -2,7 +2,7 @@
     <mat-toolbar-row>
         <img src="../../../assets/img/white.png">
         <button mat-icon-button color="link" [matMenuTriggerFor]="menu"><mat-icon>location_city</mat-icon></button>
-        <mat-menu #menu="matMenu" class="menu">
+        <mat-menu #menu class="menu">
             <button *ngFor="let city of cities" mat-menu-item (click)="changeCity(city.id)">{{ city.name }}</button>
           </mat-menu>
     </mat-toolbar-row>
