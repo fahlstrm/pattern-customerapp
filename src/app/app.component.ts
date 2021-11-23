@@ -23,8 +23,8 @@ export class AppComponent {
       console.log(res);
       if (res.user_type == "user") {
         this.auth = true;
-      }
-    })
+      };
+    });
   }
 
   loginClick() {
