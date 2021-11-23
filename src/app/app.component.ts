@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './services/http.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,23 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'SCTR';
   auth = false;
+
+  constructor(private httpService: HttpService) {}
+
+  ngOnInit() {
+    this.checkClick()
+    console.log("checked click")
+  }
+
+  checkClick() {
+    this.httpService.checkUser()
+    .subscribe((res) => {
+      console.log(res);
+      if (res.user_type == "user") {
+        this.auth = true;
+      }
+    })
+  }
 
   loginClick() {
     this.auth = !this.auth;
