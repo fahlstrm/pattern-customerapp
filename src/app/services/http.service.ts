@@ -10,7 +10,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = "http://localhost:8080/api/";
+  baseUrl = "http://localhost:8000/api/";
 
   getCities() {
     const citiesUrl = this.baseUrl + "cities";
@@ -88,4 +88,18 @@ export class HttpService {
       }
     });
   }
+
+  githubRedirect() {
+    const redirectUrl = this.baseUrl + "auth/github/redirect";
+    return this.http.get<any>(redirectUrl);
+  }
+
+  checkUser() {
+    const checkUrl = this.baseUrl + "auth/github/check-usertype";
+    return this.http.get<any>(checkUrl);
+  }
+
+  // setUser(id) {
+  //   this.user = 
+  // }
 }
