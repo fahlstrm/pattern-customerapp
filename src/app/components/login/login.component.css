@@ -15,3 +15,8 @@
 button {
     margin-top: 20vh;
 }
+
+mat-spinner {
+    margin: auto;
+    margin-top: 15vh;
+}
