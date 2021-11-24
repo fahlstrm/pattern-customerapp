@@ -70,13 +70,24 @@ export class HttpService {
   }
 
   // For parking in designated parking areas or charging stations
-  putPark(id: number, station: number, lat_pos: any, lon_pos: any) {
+  putPark(id: number, station: number, lat_pos: any, lon_pos: any, type: string) {
     const scooterUrl = this.baseUrl + "scooters/" + id;
-    let data = {
-      "customer_id": "setNull",
-      "station_id": station,
-      "lat_pos": lat_pos,
-      "lon_pos": lon_pos
+    let data;
+    if (type == "charge") {
+      data = {
+        "customer_id": "setNull",
+        "station_id": station,
+        "lat_pos": lat_pos,
+        "lon_pos": lon_pos,
+        "status": "maintenance"
+      }
+    } else {
+      data = {
+        "customer_id": "setNull",
+        "station_id": station,
+        "lat_pos": lat_pos,
+        "lon_pos": lon_pos
+      }
     }
     return this.http.put<any>(scooterUrl, data)
     .subscribe({
