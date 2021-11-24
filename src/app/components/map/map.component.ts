@@ -116,7 +116,7 @@ addStations() {
         this.layers.push(marker([ p.lat_center, p.lon_center], {
           icon: p.type == "park" ? this.parkingIcon : this.chargeIcon
         }).addEventListener("click", () => {
-          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center, p.location));
+          this.zone.run(() => this.activateService.parkClick(p.id, p.lat_center, p.lon_center, p.location, p.type));
         }));
       });
     });

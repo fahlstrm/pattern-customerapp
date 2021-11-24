@@ -47,7 +47,7 @@ export class ActivateService {
   }
 
   // Opens dialog on parking marker
-  parkClick(id: any, lat_pos: any, lon_pos: any, name: any) {
+  parkClick(id: any, lat_pos: any, lon_pos: any, name: string, type: string) {
     let dialogRef = this.dialog.open(ParkDialogComponent, {
       data: {parking: name}
     });
@@ -56,7 +56,7 @@ export class ActivateService {
     dialogRef.afterClosed().subscribe(result => {
       if (result == "true") {
         console.log("Du har parkerat scooter " + this.scooter + " på parkering " + id, lat_pos, lon_pos)
-        this.httpService.putPark(this.scooter, id, lat_pos, lon_pos);
+        this.httpService.putPark(this.scooter, id, lat_pos, lon_pos, type);
         this.toggleActive();
         this.openSnackbar();
       }
