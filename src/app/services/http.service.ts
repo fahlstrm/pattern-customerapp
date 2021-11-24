@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -96,7 +96,7 @@ export class HttpService {
 
   checkUser() {
     const checkUrl = this.baseUrl + "auth/github/check-usertype";
-    return this.http.get<any>(checkUrl);
+    return this.http.get<any>(checkUrl, { withCredentials: true });
   }
 
   // setUser(id) {
