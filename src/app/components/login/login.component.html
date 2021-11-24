@@ -3,6 +3,7 @@
     <button mat-raised-button (click)="loginClick()" *ngIf="!loggedIn">
         Logga in med GitHub
     </button>
+    <mat-spinner *ngIf="loggedIn"></mat-spinner>
     <button mat-raised-button (click)="checkClick()" *ngIf="loggedIn">
         Klicka för att använda appen
     </button>
