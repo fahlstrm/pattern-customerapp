@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-finish-snackbar',
@@ -6,7 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finish-snackbar.component.css']
 })
 export class FinishSnackbarComponent {
-
-  constructor() { }
 
 }

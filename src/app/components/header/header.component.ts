@@ -25,11 +25,11 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  changeCity(city: any) {
+  changeCity(city: number): void {
     this.cityService.setCity(city);
   }
 
-  endClick() {
+  endClick(): void {
     this.activateService.endClick();
   }
 

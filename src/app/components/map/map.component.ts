@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { icon, latLng, Map, marker, point, polyline, tileLayer } from 'leaflet';
-import { Subject, Subscription } from 'rxjs';
+import { icon, latLng, marker, tileLayer } from 'leaflet';
+import { Subscription } from 'rxjs';
 import { ActivateService } from 'src/app/services/activate.service';
 import { CityService } from 'src/app/services/city.service';
 import { ScootersService } from 'src/app/services/scooters.service';
@@ -73,7 +73,7 @@ ngOnInit(): void {
   this.addMapContent();
 }
 
-addMapContent() {
+addMapContent(): void {
 
   // Add base layers
   this.layers = [
@@ -93,7 +93,7 @@ addMapContent() {
 }
 
 // Adds scooters to map
-addScooters() {
+addScooters(): void {
   this.scootersService.getScooters()
     .subscribe((data) => {
       this.scooters = data;
@@ -108,7 +108,7 @@ addScooters() {
 }
 
 // Adds stations to map
-addStations() {
+addStations(): void {
   this.scootersService.getParkings()
     .subscribe((data) => {
       this.parkings = data;

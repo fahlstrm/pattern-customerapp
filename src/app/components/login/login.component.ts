@@ -1,13 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loggedIn = false;
 
@@ -15,10 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private httpService: HttpService) { }
 
-  ngOnInit(): void {
-  }
-
-  loginClick() {
+  loginClick(): void {
     this.httpService.githubRedirect()
     .subscribe((res) => {
       console.log(res.login_url);
@@ -27,7 +24,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  checkClick() {
+  checkClick(): void {
     this.httpService.checkUser()
     .subscribe((res) => {
       console.log(res);

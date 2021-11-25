@@ -12,7 +12,7 @@ export class CityService {
     this.getCities()
   }
 
-  setCity(id: any) {
+  setCity(id: any): void {
     this.httpService.getCity(id)
     .subscribe((data) => {
       this.subject.next(data)
@@ -23,7 +23,7 @@ export class CityService {
     return this.subject.asObservable();
   }
 
-  getCities() {
+  getCities(): Observable<any> {
     return this.httpService.getCities()   
   }
 }

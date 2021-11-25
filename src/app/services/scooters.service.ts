@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,13 +9,11 @@ import { HttpService } from './http.service';
 export class ScootersService {
   constructor(private httpService: HttpService) { }
 
-  getScooters() {
+  getScooters(): Observable<any> {
     return this.httpService.getScooters()
   }
 
-  getParkings() {
-
-    // return parkings
+  getParkings(): Observable<any>  {
     return this.httpService.getStations()
   }
 }

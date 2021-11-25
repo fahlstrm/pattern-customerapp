@@ -1,4 +1,4 @@
-import { Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import  { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,15 +12,15 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class ActivateService {
-  private scooterActive: boolean = false;
+  private scooterActive = false;
   private scooter: any;
   private subject = new Subject<any>();
 
   constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private httpService: HttpService) { }
 
   // Opens dialog on scooter marker
-  markerClick(id: any, battery: any) {
-    let dialogRef = this.dialog.open(StartDialogComponent, {
+  markerClick(id: any, battery: any): void {
+    const dialogRef = this.dialog.open(StartDialogComponent, {
       data: {scooter: id, battery: battery}
     });
     
@@ -36,7 +36,7 @@ export class ActivateService {
   }
 
   // Toggle active ride
-  toggleActive() {
+  toggleActive(): void {
     this.scooterActive = !this.scooterActive;
     this.subject.next(this.scooterActive)
   }
@@ -47,8 +47,8 @@ export class ActivateService {
   }
 
   // Opens dialog on parking marker
-  parkClick(id: any, lat_pos: any, lon_pos: any, name: string, type: string) {
-    let dialogRef = this.dialog.open(ParkDialogComponent, {
+  parkClick(id: any, lat_pos: any, lon_pos: any, name: string, type: string): void {
+    const dialogRef = this.dialog.open(ParkDialogComponent, {
       data: {parking: name}
     });
     
@@ -64,8 +64,8 @@ export class ActivateService {
   }
 
   // Opens dialog on end outside parking
-  endClick() {
-    let dialogRef = this.dialog.open(EndDialogComponent, {});
+  endClick(): void {
+    const dialogRef = this.dialog.open(EndDialogComponent, {});
     
     // Actions if park scooter is clicked
     dialogRef.afterClosed().subscribe(result => {
@@ -79,7 +79,7 @@ export class ActivateService {
   }
 
   // Opens snackbar to let user know that the ride has finished
-  openSnackbar() {
+  openSnackbar(): void {
     this._snackBar.openFromComponent(FinishSnackbarComponent, {
       duration: 5000,
     });
