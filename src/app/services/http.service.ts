@@ -12,6 +12,10 @@ export class HttpService {
 
   baseUrl = "http://localhost:8000/api/";
 
+  setUser(user: number) {
+    this.user = user;
+  }
+
   getCities() {
     const citiesUrl = this.baseUrl + "cities";
     return this.http.get<any>(citiesUrl);
@@ -38,8 +42,6 @@ export class HttpService {
     let data = {
       "customer_id": this.user
     }
-    console.log(scooterUrl)
-    console.log(data)
     return this.http.put<any>(scooterUrl, data)
     .subscribe({
       next: ret => {
@@ -109,8 +111,4 @@ export class HttpService {
     const checkUrl = this.baseUrl + "auth/github/check-usertype";
     return this.http.get<any>(checkUrl, { withCredentials: true });
   }
-
-  // setUser(id) {
-  //   this.user = 
-  // }
 }
