@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     this.httpService.checkUser()
     .subscribe((res) => {
       console.log(res);
-      if (res.user_type == "user") {
+      if (res.user_type == "customer") {
+        this.httpService.setUser(res.id);
         this.loginEvent.emit("clicked");
       }
     })
