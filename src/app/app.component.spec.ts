@@ -28,10 +28,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('SCTR');
   });
 
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   expect(compiled.querySelector('.content span')?.textContent).toContain('SCTR app is running!');
-  // });
+  it('should change auth variable on function call', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const oldAuth = app.auth;
+    app.loginClick();
+    expect(app.auth).not.toEqual(oldAuth);
+  });
 });
