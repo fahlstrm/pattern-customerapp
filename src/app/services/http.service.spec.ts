@@ -16,9 +16,9 @@ describe('HttpService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('sets user', () => {
-    spyOn(HttpService.prototype, 'setUser').and.callThrough();
-    service.setUser(1);
-    expect(service.setUser).toHaveBeenCalled();
-  });
+  // it('sets user', () => {
+  //   spyOn(HttpService.prototype, 'setUser').and.callThrough();
+  //   service.setUser(1);
+  //   expect(service.setUser).toHaveBeenCalled();
+  // });
 });

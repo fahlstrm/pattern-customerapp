@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   scooterActive!: boolean;
   subscription: Subscription;
 
-  constructor(private activateService: ActivateService, private cityService: CityService) {
+  constructor(private activateService: ActivateService, public cityService: CityService) {
     this.subscription = this.activateService.onToggle()
     .subscribe(value => this.scooterActive = value);
   }
@@ -25,10 +25,12 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  // Function for changing city in menu
   changeCity(city: number): void {
     this.cityService.setCity(city);
   }
 
+  // Used by toolbar button to street park scooter
   endClick(): void {
     this.activateService.endClick();
   }

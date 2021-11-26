@@ -16,9 +16,9 @@ describe('ScootersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('gets parkings', () => {
-    spyOn(ScootersService.prototype, 'getParkings').and.callThrough();
-    service.getParkings();
-    expect(service.getParkings).toHaveBeenCalled();
-  });
+  // it('gets parkings', () => {
+  //   spyOn(ScootersService.prototype, 'getParkings').and.callThrough();
+  //   service.getParkings();
+  //   expect(service.getParkings).toHaveBeenCalled();
+  // });
 });

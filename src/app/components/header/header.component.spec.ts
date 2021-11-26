@@ -2,7 +2,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {By} from "@angular/platform-browser";
+import { By } from "@angular/platform-browser";
+import { of } from 'rxjs';
+import { CityService } from 'src/app/services/city.service';
 
 import { HeaderComponent } from './header.component';
 
@@ -11,6 +13,7 @@ describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       imports: [ MatDialogModule, MatSnackBarModule, HttpClientTestingModule ]

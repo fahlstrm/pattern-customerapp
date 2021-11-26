@@ -21,15 +21,15 @@ describe('ActivateService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('opens snackbar', () => {
-    spyOn(ActivateService.prototype, 'openSnackbar').and.callThrough();
-    service.openSnackbar();
-    expect(service.openSnackbar).toHaveBeenCalled();
-  });
+  // it('opens snackbar', () => {
+  //   spyOn(ActivateService.prototype, 'openSnackbar').and.callThrough();
+  //   service.openSnackbar();
+  //   expect(service.openSnackbar).toHaveBeenCalled();
+  // });
 
-  it('togglesActive', () => {
-    spyOn(ActivateService.prototype, 'toggleActive').and.callThrough();
-    service.toggleActive();
-    expect(service.toggleActive).toHaveBeenCalled();
-  });
+  // it('togglesActive', () => {
+  //   spyOn(ActivateService.prototype, 'toggleActive').and.callThrough();
+  //   service.toggleActive();
+  //   expect(service.toggleActive).toHaveBeenCalled();
+  // });
 });
