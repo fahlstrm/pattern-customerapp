@@ -105,11 +105,13 @@ export class HttpService {
     });
   }
 
+  // Redirects user to GitHub for login
   githubRedirect(): Observable<any> {
     const redirectUrl = this.baseUrl + "auth/github/redirect";
     return this.http.get<any>(redirectUrl);
   }
 
+  // Checks if user is authorized
   checkUser(): Observable<any> {
     const checkUrl = this.baseUrl + "auth/github/check-usertype";
     return this.http.get<any>(checkUrl, { withCredentials: true });

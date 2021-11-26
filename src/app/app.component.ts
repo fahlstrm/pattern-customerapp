@@ -13,9 +13,11 @@ export class AppComponent implements OnInit{
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
+    // Checks if user has already logged in when page is reloaded
     this.checkClick()
   }
 
+  // Checks if user is authorized
   checkClick(): void {
     this.httpService.checkUser()
     .subscribe((res) => {
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit{
     });
   }
 
+  // Changes variable to show new screen when login has been initiated
   loginClick(): void {
     this.auth = !this.auth;
   }

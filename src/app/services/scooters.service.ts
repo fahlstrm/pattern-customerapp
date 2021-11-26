@@ -9,10 +9,12 @@ import { Observable } from 'rxjs';
 export class ScootersService {
   constructor(private httpService: HttpService) { }
 
+  // Gets all scooters
   getScooters(): Observable<any> {
     return this.httpService.getScooters()
   }
 
+  // Gets all parkings
   getParkings(): Observable<any>  {
     return this.httpService.getStations()
   }

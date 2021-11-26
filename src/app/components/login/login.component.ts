@@ -15,6 +15,7 @@ export class LoginComponent {
 
   constructor(private httpService: HttpService) { }
 
+  // Get redirected to GitHub to log in
   loginClick(): void {
     this.httpService.githubRedirect()
     .subscribe((res) => {
@@ -23,6 +24,7 @@ export class LoginComponent {
     })
   }
 
+  // Continue to the app after logging in
   checkClick(): void {
     this.httpService.checkUser()
     .subscribe((res) => {

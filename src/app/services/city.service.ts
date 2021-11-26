@@ -12,6 +12,7 @@ export class CityService {
     this.getCities()
   }
 
+  // Changes active city
   setCity(id: any): void {
     this.httpService.getCity(id)
     .subscribe((data) => {
@@ -19,10 +20,12 @@ export class CityService {
     })
   }
 
+  // Returns new active city object to map
   onSet(): Observable<any> {
     return this.subject.asObservable();
   }
 
+  // Gets all city objects
   getCities(): Observable<any> {
     return this.httpService.getCities()   
   }

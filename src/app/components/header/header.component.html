@@ -1,10 +1,21 @@
+<!-- Top toolbar in the app -->
 <mat-toolbar>
+    <!-- Row that is always visible -->
     <mat-toolbar-row>
+        <!-- Logo -->
         <img src="../../../assets/img/white.png">
+        <!-- Open menu button -->
         <button mat-icon-button color="link" [matMenuTriggerFor]="menu"><mat-icon>location_city</mat-icon></button>
+        <!-- Menu -->
         <mat-menu #menu class="menu">
-            <button *ngFor="let city of cities" mat-menu-item (click)="changeCity(city.id)">{{ city.name }}</button>
-          </mat-menu>
+            <button *ngFor="let city of cities" mat-menu-item (click)="changeCity(city.id)">
+                {{ city.name }}
+            </button>
+        </mat-menu>
     </mat-toolbar-row>
-    <mat-toolbar-row *ngIf="scooterActive"><button mat-button (click)="endClick()" class="end">Avsluta resa där du är nu</button></mat-toolbar-row>
+    <!-- Row for when scooter is active -->
+    <mat-toolbar-row *ngIf="scooterActive">
+        <!-- Button to park scooter -->
+        <button mat-button (click)="endClick()" class="end">Avsluta resa där du är nu</button>
+    </mat-toolbar-row>
 </mat-toolbar>
