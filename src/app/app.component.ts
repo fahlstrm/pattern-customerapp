@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from './services/http.service';
 
 @Component({
@@ -6,30 +6,30 @@ import { HttpService } from './services/http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'SCTR';
   auth = false;
 
   constructor(private httpService: HttpService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // Checks if user has already logged in when page is reloaded
     this.checkClick()
-    console.log("checked click")
   }
 
-  checkClick() {
+  // Checks if user is authorized
+  checkClick(): void {
     this.httpService.checkUser()
     .subscribe((res) => {
-      console.log(res);
       if (res.user_type == "customer") {
         this.httpService.setUser(res.id);
         this.auth = true;
-      };
+      }
     });
   }
 
-  loginClick() {
+  // Changes variable to show new screen when login has been initiated
+  loginClick(): void {
     this.auth = !this.auth;
-    console.log(this.auth);
   }
 }

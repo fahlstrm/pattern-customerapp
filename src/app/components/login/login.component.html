@@ -1,10 +1,10 @@
 <div id="login">
     <img src="../../../assets/img/white.png" class="logo">
-    <button mat-raised-button (click)="loginClick()" *ngIf="!loggedIn">
+    <button mat-raised-button (click)="loginClick()" *ngIf="!loggedIn" id="loginClick">
         Logga in med GitHub
     </button>
     <mat-spinner *ngIf="loggedIn"></mat-spinner>
-    <button mat-raised-button (click)="checkClick()" *ngIf="loggedIn">
+    <button mat-raised-button (click)="checkClick()" *ngIf="loggedIn" id="checkClick">
         Klicka för att använda appen
     </button>
 </div>

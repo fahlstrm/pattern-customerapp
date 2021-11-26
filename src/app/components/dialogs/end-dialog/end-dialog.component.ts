@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, Optional } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-end-dialog',
@@ -7,7 +6,5 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./end-dialog.component.css']
 })
 export class EndDialogComponent {
-
-  constructor() { }
 
 }

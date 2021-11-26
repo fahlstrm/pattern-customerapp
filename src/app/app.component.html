@@ -1,8 +1,10 @@
 <div *ngIf="auth; then loggedIn else login"></div>
+<!-- If user is logged in, show app content -->
 <ng-template #loggedIn>
     <app-header></app-header>
     <app-map></app-map>
 </ng-template>
+<!-- If user is not logged in, show login screen -->
 <ng-template #login>
     <app-login (loginEvent)="loginClick()"></app-login>
 </ng-template>
