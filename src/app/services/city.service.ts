@@ -29,4 +29,5 @@ export class CityService {
   getCities(): Observable<any> {
     return this.httpService.getCities()   
   }
+
 }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-  private user = 1;
+  user = 1;
 
   constructor(private http: HttpClient) { }
 
