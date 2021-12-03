@@ -1,0 +1,23 @@
+version: '2.1'
+orbs:
+  codecov: codecov/codecov@3.1.1
+jobs:
+  build:
+    working_directory: ~/my-project
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - codecov/upload:
+          file: ./coverage/lcov.info
+      - restore_cache:
+          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - run: sudo apt update && sudo apt install libnss3 libatk1.0-0 libatk-bridge2.0-0  libx11-xcb1  libxcb-dri3-0  libxcomposite1  libxdamage1  libxfixes3  libcups2  libdrm2  libxrandr2  libgbm1  libasound2  libpangocairo-1.0-0  libgtk-3-0
+      - save_cache:
+          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - "node_modules"
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
+
+      - run: npm run codecov --disable=gcov
