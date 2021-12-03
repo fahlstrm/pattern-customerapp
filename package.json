@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "codecov": "codecov"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "@types/leaflet.markercluster": "^1.4.6",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.5.3",
+    "puppeteer": "^12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
