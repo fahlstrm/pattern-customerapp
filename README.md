@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master.svg?style=svg)](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master) [![codecov](https://codecov.io/gh/fahlstrm/pattern-adminweb/branch/master/graph/badge.svg?token=VNL3DOH0AR)](https://codecov.io/gh/fahlstrm/pattern-adminweb)
+
 # Userapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
