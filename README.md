@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master.svg?style=svg)](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master) [![codecov](https://codecov.io/gh/fahlstrm/pattern-adminweb/branch/master/graph/badge.svg?token=VNL3DOH0AR)](https://codecov.io/gh/fahlstrm/pattern-adminweb)
+[![CircleCI](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master.svg?style=svg)](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master) [![codecov](https://codecov.io/gh/fahlstrm/pattern-customerapp/branch/master/graph/badge.svg?token=ZX8X4JFRRW)](https://codecov.io/gh/fahlstrm/pattern-customerapp)
 
 # Userapp
 
