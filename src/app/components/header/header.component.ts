@@ -12,10 +12,16 @@ export class HeaderComponent implements OnInit {
   cities!: Array<any>;
   scooterActive!: boolean;
   subscription: Subscription;
+  time = 0;
+  displaytime!: string;
+  interval: any;
 
   constructor(private activateService: ActivateService, public cityService: CityService) {
     this.subscription = this.activateService.onToggle()
-    .subscribe(value => this.scooterActive = value);
+    .subscribe(value => {
+      this.scooterActive = value
+      this.scooterActive ? this.startTimer() : this.endTimer();
+    });
   }
 
   ngOnInit(): void {
@@ -23,6 +29,31 @@ export class HeaderComponent implements OnInit {
     .subscribe((data) => {
       this.cities = data;
     })
+  }
+
+ startTimer() {
+    this.interval = setInterval(() => {
+        this.time++;
+        let minutes = Math.floor(this.time/60);
+        let seconds = this.time - (minutes * 60);
+        let secondsString;
+        if (seconds < 10) {
+          secondsString = "0" + seconds;
+        } else {
+          secondsString = seconds;
+        }
+        this.displaytime = minutes + ":" + secondsString;
+      }, 1000);
+  }
+
+  endTimer() {
+    clearInterval(this.interval);
+    this.time = 0;
+  }
+
+  transform(value: number): string {
+       const minutes: number = Math.floor(value / 60);
+       return minutes + ':' + (value - minutes * 60);
   }
 
   // Function for changing city in menu
@@ -34,5 +65,9 @@ export class HeaderComponent implements OnInit {
   endClick(): void {
     this.activateService.endClick();
   }
+
+  // upSecond(): void {
+  //   this.time += 1;
+  // }
 
 }

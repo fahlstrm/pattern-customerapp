@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
   checkClick(): void {
     this.httpService.checkUser()
     .subscribe((res) => {
-      if (res.user_type == "customer") {
+      if (res.user_type == "customer" || res.user_type == "admin") {
         this.httpService.setUser(res.id);
         this.auth = true;
       }
