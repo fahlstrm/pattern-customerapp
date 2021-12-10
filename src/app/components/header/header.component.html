@@ -1,5 +1,5 @@
 <!-- Top toolbar in the app -->
-<mat-toolbar>
+<mat-toolbar color="primary">
     <!-- Row that is always visible -->
     <mat-toolbar-row>
         <!-- Logo -->
@@ -13,7 +13,11 @@
             </button>
         </mat-menu>
     </mat-toolbar-row>
-    <!-- Row for when scooter is active -->
+    <!-- Timer row for when scooter is active -->
+    <mat-toolbar-row *ngIf="scooterActive">
+        <p>Restid: {{displaytime}}</p>
+    </mat-toolbar-row>
+    <!-- Finish row for when scooter is active -->
     <mat-toolbar-row *ngIf="scooterActive">
         <!-- Button to park scooter -->
         <button mat-button (click)="endClick()" class="end">Avsluta resa där du är nu</button>
