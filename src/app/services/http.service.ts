@@ -18,22 +18,22 @@ export class HttpService {
 
   getCities(): Observable<any> {
     const citiesUrl = this.baseUrl + "cities";
-    return this.http.get<any>(citiesUrl);
+    return this.http.get<any>(citiesUrl, { withCredentials: true });
   }
 
   getCity(id: number): Observable<any> {
     const cityUrl = this.baseUrl + "cities/" + id;
-    return this.http.get<any>(cityUrl);
+    return this.http.get<any>(cityUrl, { withCredentials: true });
   }
 
   getStations(): Observable<any> {
     const stationsUrl = this.baseUrl + "stations";
-    return this.http.get<any>(stationsUrl);
+    return this.http.get<any>(stationsUrl, { withCredentials: true });
   }
 
   getScooters(): Observable<any> {
     const scootersUrl = this.baseUrl + "scooters";
-    return this.http.get<any>(scootersUrl);
+    return this.http.get<any>(scootersUrl, { withCredentials: true });
   }
 
   // Sets customer ID at start of ride
@@ -42,7 +42,7 @@ export class HttpService {
     const data = {
       "customer_id": this.user
     }
-    return this.http.put<any>(scooterUrl, data)
+    return this.http.put<any>(scooterUrl, data, { withCredentials: true })
     .subscribe({
       next: ret => {
         return ret;
@@ -61,7 +61,7 @@ export class HttpService {
       "customer_id": "setNull",
       "station_id": "setNull"
     }
-    return this.http.put<any>(scooterUrl, data)
+    return this.http.put<any>(scooterUrl, data, { withCredentials: true })
     .subscribe({
       next: ret => {
         return ret;
@@ -93,7 +93,7 @@ export class HttpService {
         "lon_pos": lon_pos
       }
     }
-    return this.http.put<any>(scooterUrl, data)
+    return this.http.put<any>(scooterUrl, data, { withCredentials: true })
     .subscribe({
       next: ret => {
         return ret;
