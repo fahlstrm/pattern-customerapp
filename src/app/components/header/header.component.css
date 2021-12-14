@@ -2,6 +2,7 @@ img {
     height: 25px;
     margin: auto;
     padding-left: 2em;
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.3));
 }
 
 .end {

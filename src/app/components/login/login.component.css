@@ -1,5 +1,7 @@
 #login {
-    background-color: black;
+    /* background-color: black;
+     */
+    background: linear-gradient(to bottom left, #5c5c5c, #3f3f3f, #313131, #252525);
     height: 100%;
     text-align: center;
 }
@@ -10,6 +12,11 @@
     display: block;
     margin: auto;
     padding-top: 20vh;
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.3));
+}
+
+.github {
+    margin: 0.5em;
 }
 
 button {
