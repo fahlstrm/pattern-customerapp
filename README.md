@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master.svg?style=svg)](https://circleci.com/gh/fahlstrm/pattern-customerapp/tree/master) [![codecov](https://codecov.io/gh/fahlstrm/pattern-customerapp/branch/master/graph/badge.svg?token=ZX8X4JFRRW)](https://codecov.io/gh/fahlstrm/pattern-customerapp)
 
-# Customerapp (userapp)
+# Customerapp
 This repository is part of a group project done for the ['pattern' course](https://www.bth.se/utbildning/program-och-kurser/kurser/20232/BR4QJ/) at Blekinge Institute of Technology.
 
 Customerapp is developed using Angular framework. 
