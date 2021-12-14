@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit {
     })
   }
 
- startTimer() {
+  // Starts counting the time
+  startTimer() {
     this.interval = setInterval(() => {
         this.time++;
         let minutes = Math.floor(this.time/60);
@@ -46,14 +47,10 @@ export class HeaderComponent implements OnInit {
       }, 1000);
   }
 
+  //Finishes counting the time
   endTimer() {
     clearInterval(this.interval);
     this.time = 0;
-  }
-
-  transform(value: number): string {
-       const minutes: number = Math.floor(value / 60);
-       return minutes + ':' + (value - minutes * 60);
   }
 
   // Function for changing city in menu
@@ -65,9 +62,5 @@ export class HeaderComponent implements OnInit {
   endClick(): void {
     this.activateService.endClick();
   }
-
-  // upSecond(): void {
-  //   this.time += 1;
-  // }
 
 }

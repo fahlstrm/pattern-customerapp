@@ -61,4 +61,19 @@ describe('HeaderComponent', () => {
     expect(component.changeCity).toHaveBeenCalled();
   });
 
+  it('should start timer', () => {
+    component.scooterActive = true;
+    fixture.detectChanges();
+    let spy = spyOn(component, 'startTimer');
+    component.startTimer();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should end timer', () => {
+    component.time = 5;
+    fixture.detectChanges();
+    component.endTimer();
+    expect(component.time).toEqual(0);
+  });
+
 });
