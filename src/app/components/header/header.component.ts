@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   scooterActive!: boolean;
   subscription: Subscription;
   time = 0;
-  displaytime!: string;
+  displaytime = "0:00";
   interval: any;
 
   constructor(private activateService: ActivateService, public cityService: CityService) {
@@ -51,6 +51,7 @@ export class HeaderComponent implements OnInit {
   endTimer() {
     clearInterval(this.interval);
     this.time = 0;
+    this.displaytime = "0:00";
   }
 
   // Function for changing city in menu

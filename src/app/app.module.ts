@@ -10,7 +10,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FinishSnackbarComponent } from './components/dialogs/finish-snackbar/finish-snackbar.component';
 import { ParkDialogComponent } from './components/dialogs/park-dialog/park-dialog.component';
 import { EndDialogComponent } from './components/dialogs/end-dialog/end-dialog.component';
-import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 
@@ -30,7 +29,6 @@ import { LoginComponent } from './components/login/login.component';
     BrowserAnimationsModule,
     MaterialModule,
     LeafletModule,
-    LeafletMarkerClusterModule,
     HttpClientModule
   ],
   providers: [],
